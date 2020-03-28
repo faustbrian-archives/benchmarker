@@ -5,7 +5,7 @@ interface IOptions extends Benchmark.Options {
 }
 
 function createBenchmark(title: string, scenarios: any[], options?: IOptions) {
-	return function(name, next) {
+	return function (name, next) {
 		const suite = new Benchmark.Suite();
 		const keys = Object.keys(scenarios);
 		const total = keys.length;
@@ -15,15 +15,15 @@ function createBenchmark(title: string, scenarios: any[], options?: IOptions) {
 			suite.add(key, scenarios[key], options);
 		}
 
-		suite.on("start", function() {
+		suite.on("start", function () {
 			console.log("  " + title);
 		});
 
-		suite.on("cycle", function(event) {
+		suite.on("cycle", function (event) {
 			console.log("    \033[0;32m✓\033[0m \033[0;37m " + event.target + "\033[0m");
 		});
 
-		suite.on("complete", function() {
+		suite.on("complete", function () {
 			if (options && !options.hideSummary) {
 				// @ts-ignore
 				const slowest = this.filter("slowest")[0];
