@@ -22,7 +22,9 @@ function createBenchmark(title: string, scenarios: any[], options?: IOptions) {
 		});
 
 		suite.on("cycle", function (event) {
-			console.log("    \033[0;32m✓\033[0m \033[0;37m " + event.target + "\033[0m");
+			console.log(
+				"    \033[0;32m✓\033[0m \033[0;37m " + event.target + "\033[0m"
+			);
 		});
 
 		suite.on("complete", function () {
@@ -64,7 +66,7 @@ function createBenchmark(title: string, scenarios: any[], options?: IOptions) {
 						relation +
 						" \033[0;37mthan\033[0m " +
 						baselineSuite.name +
-						".\n",
+						".\n"
 				);
 			}
 
@@ -79,10 +81,14 @@ function createBenchmark(title: string, scenarios: any[], options?: IOptions) {
 
 export function benchmarker(name, benchmarks, options) {
 	for (let i = 0; i < benchmarks.length; i++) {
-		benchmarks[i] = createBenchmark(benchmarks[i].name, benchmarks[i].scenarios, {
-			...benchmarks[i].options,
-			...options,
-		});
+		benchmarks[i] = createBenchmark(
+			benchmarks[i].name,
+			benchmarks[i].scenarios,
+			{
+				...benchmarks[i].options,
+				...options,
+			}
+		);
 	}
 
 	let index = -1;
@@ -90,7 +96,9 @@ export function benchmarker(name, benchmarks, options) {
 	const length = Object.keys(benchmarks).length;
 	const startTime = Date.now();
 
-	console.log("  \033[0;37mRunning " + length + " benchmarks, please wait...\033[0m\n");
+	console.log(
+		"  \033[0;37mRunning " + length + " benchmarks, please wait...\033[0m\n"
+	);
 
 	function continuation() {
 		index++;
