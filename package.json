@@ -23,6 +23,6 @@
 	},
 	"devDependencies": {
 		"@konceiver/tease": "^2.0.1",
-		"@types/benchmark": "^2.1.0"
+		"@types/benchmark": "^2.1.1"
 	}
 }
